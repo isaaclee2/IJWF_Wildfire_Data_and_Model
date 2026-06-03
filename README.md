@@ -48,7 +48,7 @@ This repository contains the training data and model code for a probabilistic su
 
 **Input features** (`X`, dim=24): current burned area, previous burned area, zonal wind, meridional wind, relative humidity, temperature, 4 terrain metrics, 14 fuel category fractions.
 
-**Outputs** (`Y`, dim=3): log-normalized change in fire area at 1, 2, and 3 hours beyond the current timestep. Invert with `exp(y * y_max) - 1` to recover acres.
+**Outputs** (`Y`, dim=3): log-normalized change in fire area at 1, 2, and 3 hours beyond the current timestep. Invert with `exp(y * ln(y_max + 1)) - 1` to recover acres.
 
 Data are derived from 152 WRF-SFIRE coupled atmosphere–wildfire simulations of 2023 CONUS wildfire events. 140 simulations are used for training and 12 are held out for testing. Each simulation is augmented with 10 random rotations and 10 forecast time samples, yielding 14,000 training samples and 1,200 test samples. See the paper (Section 2.4) for full details on normalization and data augmentation.
 
